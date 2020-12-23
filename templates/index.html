@@ -1,120 +1,89 @@
 {% extends "base.html" %}
 
   {% block content %}
-    <h5> subir un archivo <a href="/signup">Excel</a></h5>
-     <h1>Este es tu nuevo KarHorario</h1>
-     <table width="80%" align="center” border=”2”>
 
-      <div id="head_nav">
-      
-      <tr> <th>Time</th>
-      
-      <th>Lunes</th>
-      
-      <th>Martes</th>
-      
-      <th>Miércoles</th>
-      
-      <th>Jueves</th>
-      
-      <th>Viernes</th>
-      
-      </tr>
-      
-      </div>
-      
-      <tr>
-      
-      <th>10:00 - 11:00</th>
-      
-      <td>Applied Mathematics </td>
-      
-      <td>Computer Networks</td>
-      
-      <td>Information Theory and Coding</td>
-      
-      <td>Computer Organization and Architecture</td>
-      
-      <td>Automata Theory</td>
-      
-      
-      </div>
-      
-      </tr>
-      
-      <tr>
-      
-      <th>11:00 - 12:00</th>
-      
-      <td>Information Theory and Coding</td>
-      
-      <td>Web Programming</td>
-      
-      <td>Computer Networks</td>
-      
-      <td>Computer Networks</td>
-      
-      <td>Automata Theory</td>
+    <h5 class="card shadow"> subir un archivo <a href="/signup">Excel</a></h5>
+    <h1 class="m-0 font-weight-bold text-secondary">Este es tu nuevo KarHorario</h1>
+    <div class="card-body">
+      <table width="100%" border="1" bordercolor="#0000FF" cellspacing="10" cellpadding="10"">
 
-      
-      </div>
-      
-      </tr>
-      
-      <tr> <th>12:00 - 01:00</td>
-      
-      <td>Applied Mathematics</th>
-      
-      <td>Information Theory and Coding</td>
-      
-      <td>Automata Theory</td>
-      
-      <td>Computer Networks</td>
-      
-      <td>Web Programming</td>
-      
+        <div class="card shadow">
+          <tr>
+            <th bgcolor="yellow" >Bloque</th>
+            <th bgcolor="#7FFFD4">Lunes</th>
+            <th bgcolor="#FF00FF"	>Martes</th>
+            <th bgcolor="#FF7F00">Miércoles</th>
+            <th bgcolor="#7FFF00">Jueves</th>
+            <th bgcolor="#5F9EA0">Viernes</th>
+          </tr>
+        </div>
+        <tr>
+          <th bgcolor="yellow">08:30 - 09:50</th>
+          <td bgcolor="#7FFFD4">Applied Mathematics </td>
+          <td bgcolor="#FF00FF"	>Computer Networks</td>
+          <td bgcolor="#FF7F00">Information Theory and Coding</td>
+          <td bgcolor="#7FFF00">Computer Organization and Architecture</td>
+          <td bgcolor="#5F9EA0">Automata Theory</td>
+          </div>
+          </tr>
+          <tr>
+          <th bgcolor="yellow">10:00 - 11:20</th>
+          <td bgcolor="#7FFFD4">Information Theory and Coding</td>
+          <td bgcolor="#FF00FF"	>Web Programming</td>
+          <td bgcolor="#FF7F00">Computer Networks</td>
+          <td bgcolor="#7FFF00">Computer Networks</td>
+          <td bgcolor="#5F9EA0">Automata Theory</td>
 
-      
-      </div>
-      
-      </tr>
-      
-      <tr>
-      
-      <th>01:00 - 02:00</th>
-      
-      <td>Applied Mathematics</td>
-      
-      <td>Computer Organization and Architecture</td>
-      
-      <td>Automata Theory</td>
-      
-      <td>Web Programming</td>
-      
-      <td>Information Theory and Coding</td>
-      
-      </div>
-      
-      </tr>
-      
-      <tr>
-      
-      <th>02:00 - 03:00</th>
-      
-      <td>Applied Mathematics</td>
-      
-      <td>Web Programming</td>
-      
-      <td>Automata Theory</td>
-      
-      <td>Computer Organization and Architecture</td>
-      
-      <td>Information Theory and Coding</td>
-      
-      
-      </div>
-      
-      </tr>
-      
-      </table>
+          </div>
+          </tr>
+          <tr>
+          <th bgcolor="yellow">11:30 - 12:50</td>
+          <td bgcolor="#7FFFD4">Applied Mathematics</th>
+          <td bgcolor="#FF00FF"	>Information Theory and Coding</td>
+          <td bgcolor="#FF7F00">Automata Theory</td>
+          <td bgcolor="#7FFF00">Computer Networks</td>
+          <td bgcolor="#5F9EA0">Web Programming</td>
+
+          </div>
+          </tr>
+          <tr>
+
+          <th bgcolor="yellow">13:00 - 14:20</th>
+          <td bgcolor="#7FFFD4">Applied Mathematics</td>
+          <td bgcolor="#FF00FF"	>Computer Organization and Architecture</td>
+          <td bgcolor="#FF7F00">Automata Theory</td>
+          <td bgcolor="#7FFF00">Web Programming</td>
+          <td bgcolor="#5F9EA0">Information Theory and Coding</td>
+          </div>
+          </tr>
+
+          <tr>
+          <th bgcolor="yellow">14:30 - 15:50</th>
+          <td bgcolor="#7FFFD4">Applied Mathematics</td>
+          <td bgcolor="#FF00FF"	>Web Programming</td>
+          <td bgcolor="#FF7F00">Automata Theory</td>
+          <td bgcolor="#7FFF00">Computer Organization and Architecture</td>
+          <td bgcolor="#5F9EA0">Information Theory and Coding</td>
+
+          <tr>
+            <th bgcolor="yellow">16:00 - 17:20</th>
+            <td bgcolor="#7FFFD4">Applied Mathematics</td>
+            <td bgcolor="#FF00FF"	>Web Programming</td>
+            <td bgcolor="#FF7F00">Automata Theory</td>
+            <td bgcolor="#7FFF00">Computer Organization and Architecture</td>
+            <td bgcolor="#5F9EA0">Information Theory and Coding</td>
+
+            <tr>
+              <th bgcolor="yellow">17:30 - 16:50</th>
+              <td bgcolor="#7FFFD4">Applied Mathematics</td>
+              <td bgcolor="#FF00FF"	>Web Programming</td>
+              <td bgcolor="#FF7F00">Automata Theory</td>
+              <td bgcolor="#7FFF00">Computer Organization and Architecture</td>
+              <td bgcolor="#5F9EA0">Information Theory and Coding</td>
+
+        </div>
+        </tr>
+
+        </table>
+    </div>
   {% endblock %}
