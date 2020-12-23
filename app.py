@@ -4,6 +4,7 @@ from flask_wtf.file import FileField
 from werkzeug.utils import secure_filename
 from forms import SignUpForm
 from flask_sqlalchemy import SQLAlchemy
+from flask_bootstrap import Bootstrap
 
 import os
 
@@ -63,4 +64,5 @@ def hello_world():
 
 if __name__== '__main__':
   db.create_all()
+  Bootstrap(app)
   app.run('0.0.0.0', 5000, debug=True)
