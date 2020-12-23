@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request
+from flask import Flask, flash, render_template, redirect, request
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField
 from werkzeug.utils import secure_filename
@@ -6,6 +6,8 @@ from forms import SignUpForm
 from flask_sqlalchemy import SQLAlchemy
 
 import os
+
+import xlrd #para leer planillas Excel
 
 dbdir = "sqlite:///" + os.path.abspath(os.getcwd()) + "/database.db"
 
@@ -23,7 +25,7 @@ class Posts(db.Model):
 
 @app.route("/insert/default")
 def insert_default():
-  new_post = Posts( username='thomas', password=1234)
+  new_post = Posts( username='username', password=1234)
   db.session.add(new_post)
   db.session.commit()
 
@@ -42,7 +44,25 @@ def signup():
       db.session.add(new_post)
       db.session.commit()
       file = request.files['excel']
-      file.save(os.path.join(app.config["EXCEL_UPLOADS"], file.filename))
+      archivo , ext = os.path.splitext(file.filename)
+      if ext == '.xlsx' or ext == '.xlsm' or ext == '.xlsb' or ext == '.xml' or ext == '.xltx' or ext == '.xlt' or ext == '.xls' or ext == '.xla':
+        file.save(os.path.join(app.config["EXCEL_UPLOADS"], file.filename))
+        documento = xlrd.open_workbook("./static/files/"+file.filename) #'abre' el Excel
+        doc = documento.sheet_by_index(0) #"lee" la primera hoja del Excel
+        nombres_ramos = []
+        codigos_ramos = []
+        x = 0
+        for i in range(1, doc.nrows):
+          if doc.cell_value(i,1) in codigos_ramos: #verificar que el ramo no se haya registrado.
+            pass
+          else:
+              nombres_ramos.append(doc.cell_value(i,2))
+              codigos_ramos.append(doc.cell_value(i,1))
+              x = x + 1
+        return render_template('choose_classes.html', file = file, r_codes = codigos_ramos, r_names = nombres_ramos, x = x)
+      else:
+        flash('Tipo de Archivo Incorrecto.')
+        return render_template('signup.html')
       return redirect(request.url)
   return render_template('signup.html')
 
@@ -60,6 +80,13 @@ def upload():
 @app.route('/')
 def hello_world():
   return render_template('index.html')
+
+@app.route('/choose_classes', methods=['GET', 'POST'])
+def choose_classes():
+  if request.method == 'GET':
+    return render_template('choose_classes.html')
+  else:
+    return render_template('choose_classes.html')
 
 if __name__== '__main__':
   db.create_all()
