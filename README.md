@@ -4,6 +4,8 @@ Proyecto Semestral para Grafos y Algoritmos, aplicación web para la creación d
 
 >pip install flask_sqlalchemy
 
+>pip install flask-bootstrap
+
 >pip install xlrd==1.2.0
 
 Para ver la base de datos
