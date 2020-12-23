@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+    {% block content %}
+        <p>Elija los Ramos que Desea Tomar este Semestre</p>
+        <h5> {{file.filename}}</h5>
+        <br>
+        <header>
+            <h1>Ramos Disponibles</h1>
+        </header>
+            <table>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                </tr>
+                {% for i in range(x) %}
+                <tr>
+                    <td>{{ r_codes[i] }}</td>
+                    <td>{{ r_names[i] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+    {% endblock %}
