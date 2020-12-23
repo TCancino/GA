@@ -9,4 +9,5 @@ Para ver la base de datos
 
 CORRER LA APP.
 >source myvenv/bin/activate
+
 >python3 app.py
