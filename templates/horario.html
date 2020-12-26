@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+    {% block content %}
+        <header>
+            <h1>Horario {{ show_horario + 1}}</h1>
+            <p>de un total de {{ horarios_totales }} </p>
+        </header>
+            <form method="POST" action="{{url_for('otros_horarios')}}">
+                <input type="hidden" name="aux" value="{{ show_horario }}">
+                <table width="100%" border="1" bordercolor="#0000FF" cellspacing="10" cellpadding="10">
+                    <div class="card shadow">
+                        <tr>
+                            <th>Bloque</th>
+                            <th>Lunes</th>
+                            <th>Martes</th>
+                            <th>Miércoles</th>
+                            <th>Jueves</th>
+                            <th>Viernes</th>
+                        </tr>
+                    </div>
+                    {% for i in range(1,9) %}
+                        <tr>
+                            <th>{{Horario[i][0]}}</th>
+                            <th>{{Horario[i][1]}}</th>
+                            <th>{{Horario[i][2]}}</th>
+                            <th>{{Horario[i][3]}}</th>
+                            <th>{{Horario[i][4]}}</th>
+                            <th>{{Horario[i][5]}}</th>
+                        </tr>
+                    {% endfor %}
+                </table>
+                <br>
+                <p align="Left">
+                    <button type="submit">Siguiente Opción</button>
+                </p>
+            </form>
+            <form method="POST" action="{{url_for('chosen_one')}}">
+                <input type="hidden" name="aux" value="{{ show_horario }}">
+                <p align="Right">
+                    <button type="submit">Elegir Opción</button>
+                </p>
+            </form>
+    {% endblock %}
