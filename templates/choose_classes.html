@@ -1,22 +1,31 @@
 {% extends "base.html" %}
 
     {% block content %}
-        <p>Elija los Ramos que Desea Tomar este Semestre</p>
-        <h5> {{file.filename}}</h5>
+        <h1>Elija los Ramos que Desea Tomar este Semestre</h1>
         <br>
         <header>
-            <h1>Ramos Disponibles</h1>
+            <h3>Ramos Disponibles</h3>
+            <p>Máximo 7 Ramos </p>
         </header>
-            <table>
-                <tr>
-                    <th>Código</th>
-                    <th>Nombre</th>
-                </tr>
-                {% for i in range(x) %}
-                <tr>
-                    <td>{{ r_codes[i] }}</td>
-                    <td>{{ r_names[i] }}</td>
-                </tr>
-                {% endfor %}
-            </table>
+            <form method="POST" action="{{url_for('options')}}">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                    </tr>
+                    {% for i in range(x) %}
+                    <tr>
+                        {% if r_codes[i] != '' %}
+                            <td><input type="checkbox" value="{{ r_names[i] }}" class="danger" name='my_checkbox'></td>
+                            <td>{{ r_codes[i] }}</td>
+                            <td>{{ r_names[i] }}</td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </table>
+                <input type="hidden" name="secciones_arr" value="{{ secciones }}">
+                <br>
+                <button type="submit">Elegir Ramos</button>
+            </form>
     {% endblock %}
