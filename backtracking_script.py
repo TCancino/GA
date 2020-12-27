@@ -20,31 +20,31 @@ def checking (S, options, i_course, i_section):
     
     return check
 
-def backtracking (options, i_course, i_section, S):
+def backtracking (options, i_course, i_section, S, V):
     
     if i_course == len(M): #Revisión si quedan más ramos por revisar
 
         V.append(copy.deepcopy(S))
 
-        return
+        return V
 
     elif i_section == len(options[i_course]): #Revisión si quedan más secciones por revisar
 
-        return
+        return V
 
     else:
         
-        backtracking(options, i_course, i_section + 1, S)
+        backtracking(options, i_course, i_section + 1, S, V)
 
         if checking(S, options, i_course, i_section): #Se revisa compatibilidad
 
             S.append(options[i_course][i_section])
             
-            backtracking(options, i_course + 1, 0, S)
+            backtracking(options, i_course + 1, 0, S, V)
 
             S.pop()
         
-        return
+        return V
 
 #def max_rest(V):
 #    
@@ -64,13 +64,12 @@ M = [
     
     [ [1,0,1,0,1] , [2,0,2,0,2], [3,0,3,0,3] ], #Ramo 1 y sus secciones
     [ [4,0,4,0,4] , [5,0,5,0,5], [6,0,6,0,6] ], #Ramo 2 y sus secciones
-    [ [7,0,7,0,7] , [8,0,8,0,8], [9,0,9,0,9] ]
+    [ [7,0,7,0,7] , [8,0,8,0,8], [9,0,9,0,9] ]  #Ramo 3 y sus secciones
 
     ]
 
-V = []
 
-backtracking(M,0,0,[])
+V = backtracking(M,0,0,[],[])
 #max_rest(V)
 
 for s in V:
