@@ -6,11 +6,13 @@ from forms import SignUpForm
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
 from autohorario import *
+#from autohorarioBckTr import *
 
 import os
 
 import random
 import xlrd #para leer planillas Excel
+#import copy
 
 dbdir = "sqlite:///" + os.path.abspath(os.getcwd()) + "/database.db"
 
@@ -144,13 +146,16 @@ horarios_totales = 0
 @app.route('/horario', methods=['GET','POST'])
 def horario():
   if request.method == 'POST':
-    cant_ramos = len(secciones_disp_de_ramos_elegidos)
     opcion_elegida = int(request.form.get('my_checkbox'))
-    show_horario = int(request.form.get('aux'))
-    combi_secciones = combinacion_de_secciones_1(cant_ramos, secciones_disp_de_ramos_elegidos, opcion_elegida)
-    horarios_totales = len(combi_secciones)
+    cant_ramos = len(secciones_disp_de_ramos_elegidos)
     if cant_ramos == 0:
       return 'No Hay Combinaciones Posibles'
+    show_horario = int(request.form.get('aux'))
+    if opcion_elegida == 1:
+      combi_secciones = backtracking(secciones_disp_de_ramos_elegidos,0,0,[],[])
+    else:
+      combi_secciones = combinacion_de_secciones_1(cant_ramos, secciones_disp_de_ramos_elegidos, opcion_elegida)
+    horarios_totales = len(combi_secciones)
     for c_s in combi_secciones:
       Horarios.append(hacer_horario(c_s))
     Horario = Horarios[show_horario]

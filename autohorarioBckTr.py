@@ -8,7 +8,7 @@ def checking (S, options, i_course, i_section):
 
         for block in range(len(S[section])):
 
-            if S[section][block] == options[i_course][i_section][block] and S[section][block] != 0:
+            if S[section] == options[i_course][i_section][block] and S[section][block] != 0:
 
                 check = False
 
@@ -58,20 +58,3 @@ def backtracking (options, i_course, i_section, S, V):
 #
 #
 #    return
-
-
-M = [
-
-    [ [1,0,1,0,1] , [2,0,2,0,2], [3,0,3,0,3] ], #Ramo 1 y sus secciones
-    [ [4,0,4,0,4] , [5,0,5,0,5], [6,0,6,0,6] ], #Ramo 2 y sus secciones
-    [ [7,0,7,0,7] , [8,0,8,0,8], [9,0,9,0,9] ]  #Ramo 3 y sus secciones
-
-    ]
-
-
-V = backtracking(M,0,0,[],[])
-#max_rest(V)
-
-for s in V:
-    print(s)
-#print(V)

@@ -1,5 +1,6 @@
 import random
 import xlrd #para leer planillas Excel
+import copy
 
 class Ramo:
     def __init__(self, name, codigo):
@@ -438,6 +439,31 @@ def hacer_horario(combi_secciones, ramos_arr):
                 H[b][d+1] = nom_ramo_sec + '|'
     imprimir_horario(H)
 
+def checking(S, options, i_course, i_section):
+    check = True
+    for section in range(len(S)):
+        for block in range(5):
+            if S[section].get_class(block) == options[i_course][i_section].get_class(block) and S[section].get_class(block) != 0:
+                check = False
+                break
+        if check == False:
+            return check
+    return check
+
+def backtracking(options, i_course, i_section, S, V):
+    if i_course == len(options): #Revisión si quedan más ramos por revisar
+        V.append(copy.deepcopy(S))
+        return V
+    elif i_section == len(options[i_course]): #Revisión si quedan más secciones por revisar
+        return V
+    else:
+        backtracking(options, i_course, i_section + 1, S, V)
+        if checking(S, options, i_course, i_section): #Se revisa compatibilidad
+            S.append(options[i_course][i_section])
+            backtracking(options, i_course + 1, 0, S, V)
+            S.pop()
+        return V
+
 #MAIN
 
 #Solo para las pruebas
@@ -557,7 +583,8 @@ while(inwhile):
     x = int(input("Ingrese el numero que desee: "))
 
     if x == 1: # Ver todas las opciones
-        V_solucion = combinacion_de_secciones_1(cant_ramos_a_tomar, secciones_disp_de_ramos_elegidos, x)
+        V_solucion = backtracking(secciones_disp_de_ramos_elegidos, 0, 0, [], [])
+        #combinacion_de_secciones_1(cant_ramos_a_tomar, secciones_disp_de_ramos_elegidos, x)
         cont_opciones = 1
         if len(V_solucion) == 0:
             print ("\t\t\t\t\tERROR!!!")
