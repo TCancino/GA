@@ -62,7 +62,8 @@ def signup():
             if seccion in secciones:
               pass
             else:
-              secciones.append(seccion)
+              if seccion.get_cupo() > 0:
+                secciones.append(seccion)
             continue
           else:
             # GUARDAR RAMOS:

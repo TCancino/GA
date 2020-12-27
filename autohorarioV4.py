@@ -460,7 +460,8 @@ for i in range(1, doc.nrows): #RECORRER el EXCEL para llenar llenar los arreglos
         if seccion in secciones:
             pass
         else:
-            secciones.append(seccion)
+            if seccion.get_cupo() > 0:
+                secciones.append(seccion)
         continue
     else:
         # GUARDAR RAMOS:
