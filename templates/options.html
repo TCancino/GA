@@ -2,7 +2,7 @@
 
     {% block content %}
         <header>
-            <h1>Elija como quiere "optimizar" su Horario</h1>
+            <h1>Elija preferencia para armar su Horario</h1>
         </header>
             <form method="POST" action="{{url_for('horario')}}">
                 <!-- <input type="hidden" name="secciones_arr" value="{{ secciones }}"> -->
@@ -14,11 +14,11 @@
                     </tr>
                     <tr>
                         <td><input type="radio" value="2" class="danger" name='my_checkbox'></td>
-                        <td>Ventanas entre clases chikitas(v1).</td>
+                        <td>Ventanas lo más pequeñas posibles.</td>
                     </tr>
                     <tr>
                         <td><input type="radio" value="3" class="danger" name='my_checkbox'></td>
-                        <td>Ventanas entre clases chikitas(v2).</td>
+                        <td>Menor cantidad de ventanas.</td>
                     </tr>
                     <tr>
                         <td><input type="radio" value="4" class="danger" name='my_checkbox'></td>
