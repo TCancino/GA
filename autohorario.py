@@ -1,3 +1,4 @@
+import copy
 class Ramo:
     def __init__(self, name, codigo):
         self.nombre = name
@@ -135,12 +136,12 @@ def op_5(secciones): #Entrar Tarde
 
 #Quizá aqui es el Backtracking
 def combinacion_de_secciones_1(cant_ramos, secciones_disp_de_ramos_elegidos, opcion_elegida): #Restricción "minima" (no tope de horario)
-    combi_secciones = [] #arreglo con todas las combinaciones de secciones, posibles o no
+    comb_secciones = [] #arreglo con todas las combinaciones de secciones, posibles o no
     ventana_mas_chica = 7
     peso_minimo = 40
     if cant_ramos == 1:
         print ("NO NECESITAS ESTA 'APP', VE LA SECCION KE MAS TE GUSTE ¬¬")
-        combi_secciones = secciones_disp_de_ramos_elegidos[0]
+        comb_secciones = secciones_disp_de_ramos_elegidos[0]
     elif cant_ramos == 2:
         for i1 in secciones_disp_de_ramos_elegidos[0]:
             for i2 in secciones_disp_de_ramos_elegidos[1]:
@@ -155,22 +156,22 @@ def combinacion_de_secciones_1(cant_ramos, secciones_disp_de_ramos_elegidos, opc
                 if combi_sirve == True:
                     if opcion_elegida == 2:
                         big_ventana_de_combi = op_2([i1,i2])
-                        combi_secciones.append([big_ventana_de_combi,[i1,i2]])
+                        comb_secciones.append([big_ventana_de_combi,[i1,i2]])
                         if big_ventana_de_combi < ventana_mas_chica:
                             ventana_mas_chica = big_ventana_de_combi
                     elif opcion_elegida == 3:
                         peso_de_combi = op_3([i1,i2])
-                        combi_secciones.append([peso_de_combi,[i1,i2]])
+                        comb_secciones.append([peso_de_combi,[i1,i2]])
                         if peso_de_combi < peso_minimo:
                             peso_minimo = peso_de_combi
                     elif opcion_elegida == 4:
                         if op_4([i1,i2]) == True:
-                            combi_secciones.append([i1,i2])
+                            comb_secciones.append([i1,i2])
                     elif opcion_elegida == 5:
                         if op_5([i1,i2]) == True:
-                            combi_secciones.append([i1,i2])
+                            comb_secciones.append([i1,i2])
                     else:
-                        combi_secciones.append([i1,i2])
+                        comb_secciones.append([i1,i2])
     elif cant_ramos == 3:
         for i1 in secciones_disp_de_ramos_elegidos[0]:
             for i2 in secciones_disp_de_ramos_elegidos[1]:
@@ -189,22 +190,22 @@ def combinacion_de_secciones_1(cant_ramos, secciones_disp_de_ramos_elegidos, opc
                     if combi_sirve == True:
                         if opcion_elegida == 2:
                             big_ventana_de_combi = op_2([i1,i2,i3])
-                            combi_secciones.append([big_ventana_de_combi,[i1,i2,i3]])
+                            comb_secciones.append([big_ventana_de_combi,[i1,i2,i3]])
                             if big_ventana_de_combi < ventana_mas_chica:
                                 ventana_mas_chica = big_ventana_de_combi
                         elif opcion_elegida == 3:
                             peso_de_combi = op_3([i1,i2,i3])
-                            combi_secciones.append([peso_de_combi,[i1,i2,i3]])
+                            comb_secciones.append([peso_de_combi,[i1,i2,i3]])
                             if peso_de_combi < peso_minimo:
                                 peso_minimo = peso_de_combi
                         elif opcion_elegida == 4:
                             if op_4([i1,i2,i3]) == True:
-                                combi_secciones.append([i1,i2,i3])
+                                comb_secciones.append([i1,i2,i3])
                         elif opcion_elegida == 5:
                             if op_5([i1,i2,i3]) == True:
-                                combi_secciones.append([i1,i2,i3])
+                                comb_secciones.append([i1,i2,i3])
                         else:
-                            combi_secciones.append([i1,i2,i3])
+                            comb_secciones.append([i1,i2,i3])
     elif cant_ramos == 4:
         for i1 in secciones_disp_de_ramos_elegidos[0]:
             for i2 in secciones_disp_de_ramos_elegidos[1]:
@@ -227,22 +228,22 @@ def combinacion_de_secciones_1(cant_ramos, secciones_disp_de_ramos_elegidos, opc
                         if combi_sirve == True:
                             if opcion_elegida == 2:
                                 big_ventana_de_combi = op_2([i1,i2,i3,i4])
-                                combi_secciones.append([big_ventana_de_combi,[i1,i2,i3,i4]])
+                                comb_secciones.append([big_ventana_de_combi,[i1,i2,i3,i4]])
                                 if big_ventana_de_combi < ventana_mas_chica:
                                     ventana_mas_chica = big_ventana_de_combi
                             elif opcion_elegida == 3:
                                 peso_de_combi = op_3([i1,i2,i3,i4])
-                                combi_secciones.append([peso_de_combi,[i1,i2,i3,i4]])
+                                comb_secciones.append([peso_de_combi,[i1,i2,i3,i4]])
                                 if peso_de_combi < peso_minimo:
                                     peso_minimo = peso_de_combi
                             elif opcion_elegida == 4:
                                 if op_4([i1,i2,i3,i4]) == True:
-                                    combi_secciones.append([i1,i2,i3,i4])
+                                    comb_secciones.append([i1,i2,i3,i4])
                             elif opcion_elegida == 5:
                                 if op_5([i1,i2,i3,i4]) == True:
-                                    combi_secciones.append([i1,i2,i3,i4])
+                                    comb_secciones.append([i1,i2,i3,i4])
                             else:
-                                combi_secciones.append([i1,i2,i3,i4])
+                                comb_secciones.append([i1,i2,i3,i4])
     elif cant_ramos == 5:
         for i1 in secciones_disp_de_ramos_elegidos[0]:
             for i2 in secciones_disp_de_ramos_elegidos[1]:
@@ -269,22 +270,22 @@ def combinacion_de_secciones_1(cant_ramos, secciones_disp_de_ramos_elegidos, opc
                             if combi_sirve == True:
                                 if opcion_elegida == 2:
                                     big_ventana_de_combi = op_2([i1,i2,i3,i4,i5])
-                                    combi_secciones.append([big_ventana_de_combi,[i1,i2,i3,i4,i5]])
+                                    comb_secciones.append([big_ventana_de_combi,[i1,i2,i3,i4,i5]])
                                     if big_ventana_de_combi < ventana_mas_chica:
                                         ventana_mas_chica = big_ventana_de_combi
                                 elif opcion_elegida == 3:
                                     peso_de_combi = op_3([i1,i2,i3,i4,i5])
-                                    combi_secciones.append([peso_de_combi,[i1,i2,i3,i4,i5]])
+                                    comb_secciones.append([peso_de_combi,[i1,i2,i3,i4,i5]])
                                     if peso_de_combi < peso_minimo:
                                         peso_minimo = peso_de_combi
                                 elif opcion_elegida == 4:
                                     if op_4([i1,i2,i3,i4,i5]) == True:
-                                        combi_secciones.append([i1,i2,i3,i4,i5])
+                                        comb_secciones.append([i1,i2,i3,i4,i5])
                                 elif opcion_elegida == 5:
                                     if op_5([i1,i2,i3,i4,i5]) == True:
-                                        combi_secciones.append([i1,i2,i3,i4,i5])
+                                        comb_secciones.append([i1,i2,i3,i4,i5])
                                 else:
-                                    combi_secciones.append([i1,i2,i3,i4,i5])
+                                    comb_secciones.append([i1,i2,i3,i4,i5])
     elif cant_ramos == 6:
         for i1 in secciones_disp_de_ramos_elegidos[0]:
             for i2 in secciones_disp_de_ramos_elegidos[1]:
@@ -315,22 +316,22 @@ def combinacion_de_secciones_1(cant_ramos, secciones_disp_de_ramos_elegidos, opc
                                 if combi_sirve == True:
                                     if opcion_elegida == 2:
                                         big_ventana_de_combi = op_2([i1,i2,i3,i4,i5,i6])
-                                        combi_secciones.append([big_ventana_de_combi,[i1,i2,i3,i4,i5,i6]])
+                                        comb_secciones.append([big_ventana_de_combi,[i1,i2,i3,i4,i5,i6]])
                                         if big_ventana_de_combi < ventana_mas_chica:
                                             ventana_mas_chica = big_ventana_de_combi
                                     elif opcion_elegida == 3:
                                         peso_de_combi = op_3([i1,i2,i3,i4,i5,i6])
-                                        combi_secciones.append([peso_de_combi,[i1,i2,i3,i4,i5,i6]])
+                                        comb_secciones.append([peso_de_combi,[i1,i2,i3,i4,i5,i6]])
                                         if peso_de_combi < peso_minimo:
                                             peso_minimo = peso_de_combi
                                     elif opcion_elegida == 4:
                                         if op_4([i1,i2,i3,i4,i5,i6]) == True:
-                                            combi_secciones.append([i1,i2,i3,i4,i5,i6])
+                                            comb_secciones.append([i1,i2,i3,i4,i5,i6])
                                     elif opcion_elegida == 5:
                                         if op_5([i1,i2,i3,i4,i5,i6]) == True:
-                                            combi_secciones.append([i1,i2,i3,i4,i5,i6])
+                                            comb_secciones.append([i1,i2,i3,i4,i5,i6])
                                     else:
-                                        combi_secciones.append([i1,i2,i3,i4,i5,i6])
+                                        comb_secciones.append([i1,i2,i3,i4,i5,i6])
     elif cant_ramos == 7:
         for i1 in secciones_disp_de_ramos_elegidos[0]:
             for i2 in secciones_disp_de_ramos_elegidos[1]:
@@ -365,36 +366,36 @@ def combinacion_de_secciones_1(cant_ramos, secciones_disp_de_ramos_elegidos, opc
                                     if combi_sirve == True:
                                         if opcion_elegida == 2:
                                             big_ventana_de_combi = op_2([i1,i2,i3,i4,i5,i6,i7])
-                                            combi_secciones.append([big_ventana_de_combi,[i1,i2,i3,i4,i5,i6,i7]])
+                                            comb_secciones.append([big_ventana_de_combi,[i1,i2,i3,i4,i5,i6,i7]])
                                             if big_ventana_de_combi < ventana_mas_chica:
                                                 ventana_mas_chica = big_ventana_de_combi
                                         elif opcion_elegida == 3:
                                             peso_de_combi = op_3([i1,i2,i3,i4,i5,i6,i7])
-                                            combi_secciones.append([peso_de_combi,[i1,i2,i3,i4,i5,i6,i7]])
+                                            comb_secciones.append([peso_de_combi,[i1,i2,i3,i4,i5,i6,i7]])
                                             if peso_de_combi < peso_minimo:
                                                 peso_minimo = peso_de_combi
                                         elif opcion_elegida == 4:
                                             if op_4([i1,i2,i3,i4,i5,i6,i7]) == True:
-                                                combi_secciones.append([i1,i2,i3,i4,i5,i6,i7])
+                                                comb_secciones.append([i1,i2,i3,i4,i5,i6,i7])
                                         elif opcion_elegida == 5:
                                             if op_5([i1,i2,i3,i4,i5,i6,i7]) == True:
-                                                combi_secciones.append([i1,i2,i3,i4,i5,i6,i7])
+                                                comb_secciones.append([i1,i2,i3,i4,i5,i6,i7])
                                         else:
-                                            combi_secciones.append([i1,i2,i3,i4,i5,i6,i7])
+                                            comb_secciones.append([i1,i2,i3,i4,i5,i6,i7])
     if opcion_elegida == 2:
         arr = []
-        for c_s in combi_secciones:
-            if ventana_mas_chica == c_s[0]:
-                arr.append(c_s[1])
+        for co_s in comb_secciones:
+            if ventana_mas_chica == co_s[0]:
+                arr.append(co_s[1])
         return arr
     elif opcion_elegida == 3:
         arr = []
-        for c_s in combi_secciones:
-            if peso_minimo == c_s[0]:
-                arr.append(c_s[1])
+        for co_s in comb_secciones:
+            if peso_minimo == co_s[0]:
+                arr.append(co_s[1])
         return arr
     else:
-        return combi_secciones
+        return comb_secciones
 
 def hacer_horario(combi_secciones):
     H = [["Bloque",      "LUNES","MARTES","MIÉRCOLES","JUEVES","VIERNES"],
@@ -411,5 +412,30 @@ def hacer_horario(combi_secciones):
         for d in range(5): #d -> día
             b = clases_seccion[d] #b -> bloque
             if b != 0:
-                H[b][d+1] = section.get_ramo_nom()
+                H[b][d+1] = section.get_ramo_nom() + ' - Sección ' + str(section.get_num())
     return H
+
+def checking(S, options, i_course, i_section):
+    check = True
+    for section in range(len(S)):
+        for block in range(5):
+            if S[section].get_class(block) == options[i_course][i_section].get_class(block) and S[section].get_class(block) != 0:
+                check = False
+                break
+        if check == False:
+            return check
+    return check
+
+def backtracking(options, i_course, i_section, S, V):
+    if i_course == len(options): #Revisión si quedan más ramos por revisar
+        V.append(copy.deepcopy(S))
+        return V
+    elif i_section == len(options[i_course]): #Revisión si quedan más secciones por revisar
+        return V
+    else:
+        backtracking(options, i_course, i_section + 1, S, V)
+        if checking(S, options, i_course, i_section): #Se revisa compatibilidad
+            S.append(options[i_course][i_section])
+            backtracking(options, i_course + 1, 0, S, V)
+            S.pop()
+        return V
